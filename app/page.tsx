@@ -69,7 +69,11 @@ const Card: React.FC<CardProps> = ({ id, title, imageUrl, imageClass, stats, col
     >
       {imageUrl && (
         <div className="relative mb-2">
-          <img src={`/images/${imageUrl}.jpg`} alt={cardTitle} className="w-full h-24 object-cover rounded-md" />
+          <img
+            src={imageUrl.startsWith('http') ? imageUrl : `/images/${imageUrl}.jpg`}
+            alt={cardTitle}
+            className="w-full h-24 object-cover rounded-md"
+          />
           {imageClass?.includes('tutorial') && (
             <div className="absolute bottom-2 left-2 flex gap-1">
               <div className="w-20 h-2 rounded-sm bg-white bg-opacity-30"></div>
@@ -284,9 +288,9 @@ const AestheticKanbanBoard = () => {
       },
     },
     cards: {
-      1: { id: 1, title: 'Capture from email, Slack, and Teams', imageClass: 'tutorial-1', imageUrl: '2', stats: { comments: 1, completed: 0, total: 6 } },
-      2: { id: 2, title: 'Dive into App basics', imageClass: 'tutorial-2', imageUrl: '3', stats: { comments: 1, completed: 0, total: 7 } },
-      3: { id: 3, title: 'Build your first board', imageClass: 'tutorial-3', imageUrl: '4' },
+      1: { id: 1, title: 'Capture from email, Slack, and Teams', imageClass: 'tutorial-1', imageUrl: 'https://picsum.photos/400/200?random=1', stats: { comments: 1, completed: 0, total: 6 } },
+      2: { id: 2, title: 'Dive into App basics', imageClass: 'tutorial-2', imageUrl: 'https://picsum.photos/400/200?random=2', stats: { comments: 1, completed: 0, total: 7 } },
+      3: { id: 3, title: 'Build your first board', imageClass: 'tutorial-3', imageUrl: 'https://picsum.photos/400/200?random=3' },
       4: { id: 4, title: 'Start using My App' },
       5: { id: 5, title: 'New Card 5' },
       6: { id: 6, title: 'New Card 6' },
